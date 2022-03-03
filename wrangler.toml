@@ -1,0 +1,16 @@
+name = "juno-website"
+account_id = "DEV_ACCOUNT"
+type = "webpack"
+route = ''
+zone_id = ''
+usage_model = ''
+compatibility_flags = []
+workers_dev = true
+site = {bucket = "./build",entry-point = "workers-site"}
+compatibility_date = "2022-01-04"
+
+[env.production]
+name = "mint"
+workers_dev = true
+route = 'https://some.domain/*'
+zone_id = 'PROD_ZONE_ID'
