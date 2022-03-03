@@ -1,13 +1,18 @@
-import {FC} from "react";
+import { FC, ReactNode } from "react";
+type Props = {
+  children: ReactNode;
+  onClick: () => void;
+};
 
-export const Button: FC = (props) => {
-    return (<button
-        role="button"
-        className={
-            "w-full xs:w-auto text-white uppercase bg-black hover:bg-gray-800 font-black px-8 py-3 mb-6 rounded flex items-center justify-center "
-        }
-        {...props}
+export const Button: FC<Props> = ({ children, onClick }: Props) => {
+  return (
+    <button
+      className={
+        "w-full xs:w-auto text-white uppercase bg-black hover:bg-gray-800 font-black px-8 py-3 mb-6 rounded flex items-center justify-center "
+      }
+      onClick={onClick}
     >
-        {props.children}
-    </button>)
-}
+      {children}
+    </button>
+  );
+};

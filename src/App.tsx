@@ -1,11 +1,32 @@
+import React, { useContext, useEffect } from "react";
 import "./App.scss";
 import Tilt from "react-parallax-tilt";
-import ImageNft from "./assets/488.jpeg";
+import ImageNft from "./assets/0.png";
 
 import { Footer } from "./components/Footer";
 import { Button } from "./components/Button";
 
+import useMintNft from "./hooks/useMintNft";
+import { appStore, onAppMount } from './state/app';
+
 const App = () => {
+  const { dispatch } = useContext(appStore);
+  const onMount = () => {
+    dispatch(onAppMount());
+  };
+
+  useEffect(onMount, []);
+  const { state } = useContext(appStore);
+  const { wallet } = state;
+  const { mintNft } = useMintNft();
+  const handleClick = () => {
+    if (!wallet.signedIn) {
+      const successUrl = `${window.location.origin}`;
+      wallet.signIn(successUrl);
+    } else {
+      mintNft(1);
+    }
+  };
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-grow flex items-center">
@@ -23,8 +44,8 @@ const App = () => {
               </div>
 
               <div className="flex space-x-4 w-full">
-                <Button>Mint 1</Button>
-                <Button>Mint 5</Button>
+                <Button onClick={handleClick}>Mint 1</Button>
+                {/* <Button>Mint 5</Button> */}
               </div>
             </div>
             <div className="pb-10 pt-5 sm:p-10 order-1 sm:order-2">
