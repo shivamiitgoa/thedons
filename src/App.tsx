@@ -7,10 +7,11 @@ import { Footer } from "./components/Footer";
 import { Button } from "./components/Button";
 
 import useMintNft from "./hooks/useMintNft";
-import { appStore, onAppMount } from './state/app';
+import { appStore, onAppMount } from "./state/app";
 
 const App = () => {
   const { dispatch } = useContext(appStore);
+
   const onMount = () => {
     dispatch(onAppMount());
   };
@@ -20,11 +21,19 @@ const App = () => {
   const { wallet } = state;
   const { mintNft } = useMintNft();
   const handleClick = () => {
-    if (!wallet.signedIn) {
+    if (!wallet || !wallet.signedIn) {
       const successUrl = `${window.location.origin}`;
       wallet.signIn(successUrl);
     } else {
       mintNft(1);
+    }
+  };
+  const handleManyClick = () => {
+    if (!wallet || !wallet.signedIn) {
+      const successUrl = `${window.location.origin}`;
+      wallet.signIn(successUrl);
+    } else {
+      mintNft(5);
     }
   };
   return (
@@ -45,7 +54,7 @@ const App = () => {
 
               <div className="flex space-x-4 w-full">
                 <Button onClick={handleClick}>Mint 1</Button>
-                {/* <Button>Mint 5</Button> */}
+                <Button onClick={handleManyClick}>Mint 5</Button>
               </div>
             </div>
             <div className="pb-10 pt-5 sm:p-10 order-1 sm:order-2">

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { minterConfig } from "../config";
 import * as nearAPI from 'near-api-js';
 import { getWallet, getContract, getPrice } from '../utils/near-utils';
@@ -18,14 +17,6 @@ export const {
     format: { formatNearAmount, parseNearAmount },
   },
 } = nearAPI;
-
-const linkmatcher =
-  /https:\/\/wallet.near.org\/linkdrop\/[^/]+\/(?<key>.+)\?redirectUrl=/;
-
-function getPublicKey(link) {
-  const m = link.match(linkmatcher).groups.key;
-  return KeyPairEd25519.fromString(m).getPublicKey();
-}
 
 export const initNear =
   () =>
@@ -52,14 +43,13 @@ export const initNear =
         new nearAPI.keyStores.BrowserLocalStorageKeyStore().clear();
       };
 
-      // Check if network if different, if so, logout
       if (wallet.signIn) {
         if (wallet?._authData?.accountId) {
           const walletNetwork = wallet._authData.accountId.endsWith('.testnet')
             ? 'testnet'
             : 'mainnet';
           const currentNetwork = near.config.networkId;
-          if (walletNetwork != currentNetwork) {
+          if (walletNetwork !== currentNetwork) {
             wallet.signOut();
           }
         } else {
@@ -84,14 +74,9 @@ export const initNear =
         const [
           tokensLeft,
           nftTotalSupply,
-          { base_uri: urlIpfs },
         ] = await Promise.all([
           contract.tokens_left(),
           contract.nft_total_supply(),
-          contract.nft_tokens_for_owner({
-            account_id: account.accountId,
-          }),
-          contract.nft_metadata(),
         ]);
 
         // if all tokens buy soldOut will be true
@@ -99,7 +84,6 @@ export const initNear =
         const state = getState();
         const app = {
           ...state.app,
-          urlIpfs,
           soldOut,
           tokensLeft,
         };

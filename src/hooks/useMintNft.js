@@ -8,7 +8,7 @@ const useMintNft = () => {
   const { contract, price } = state;
 
   const mintNft = async (count = 1) => {
-    const callbackUrl = `${window.location.origin}/my-nfts`;
+    const callbackUrl = `${window.location.origin}`;
     if (count === 1) {
       contract.nft_mint_one({
         args: {},

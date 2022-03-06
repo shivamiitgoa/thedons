@@ -1,19 +1,11 @@
 import { StateUtils } from '../utils/state-utils';
 import { initNear } from './near';
 
+// price and sold out, tokens left, all replaced with actual contract data
 const initialState = {
   app: {
     soldOut: false,
-    oneCount: 1,
-    manyCount: 5,
-    revealDragons: JSON.parse(localStorage.getItem('revealDragons')) || {},
-    misfitsArray: [],
-    linkDropArray: [],
-    urlIpfs: '',
     tokensLeft: undefined,
-  },
-  near: {
-    initialized: false,
   },
   price: {
     oneNFT: 5,
