@@ -8,6 +8,7 @@ import { Button } from "./components/Button";
 
 import useMintNft from "./hooks/useMintNft";
 import { appStore, onAppMount } from "./state/app";
+import { Header } from "./components/Header";
 
 const App = () => {
   const { dispatch } = useContext(appStore);
@@ -38,6 +39,7 @@ const App = () => {
   };
   return (
     <div className="flex flex-col min-h-screen">
+      <Header />
       <div className="flex-grow flex items-center">
         <div className="container">
           <div className="flex flex-col sm:grid grid-cols-2 gap-4">
@@ -74,7 +76,6 @@ const App = () => {
           </div>
         </div>
       </div>
-
       <Footer className="flex-shrink-0" />
     </div>
   );
