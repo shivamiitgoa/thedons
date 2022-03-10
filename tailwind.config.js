@@ -2,7 +2,10 @@ const colors = require("tailwindcss/colors");
 
 // tailwind.config.js
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./src/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: {
+    enabled: true,
+    content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -33,7 +36,7 @@ module.exports = {
     },
     colors: {
       ...colors,
-      black: '#0c0c0c',
+      black: "#0c0c0c",
       "gray-dark": "#616d7e",
       red: "#ff4202",
     },
