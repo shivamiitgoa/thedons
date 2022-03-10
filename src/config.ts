@@ -15,7 +15,7 @@ export const minterConfig = {
   nodeUrl: "https://rpc.testnet.near.org",
   walletUrl: "https://wallet.testnet.near.org",
   helperUrl: "https://helper.testnet.near.org",
-  contractName: "app10.flyingsaucertenk.testnet",
+  contractName: "nft.tradefortendies.testnet",
   GAS: "200000000000000",
   DEFAULT_NEW_ACCOUNT_AMOUNT: "0.1",
   contractMethods: {

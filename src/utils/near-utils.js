@@ -41,7 +41,7 @@ export const getPrice = async (near) => {
   });
 
   let [fiveTokenCost, tokenStorage, oneTokenCost] = await Promise.all([
-    contract.total_cost({ num: 5 }),
+    contract.total_cost({ num: 2 }),
     contract.token_storage_cost(),
     contract.cost_per_token({ num: 1 }),
   ]);
@@ -52,7 +52,7 @@ export const getPrice = async (near) => {
 
   const price = {
     oneNFT: oneTokenFormat - tokenStorageFormat,
-    manyNFTS: fiveTokenFormat - 5 * tokenStorageFormat,
+    manyNFTS: fiveTokenFormat - 2 * tokenStorageFormat,
     tokenStorageFormat,
     fiveTokenCost,
     oneTokenCost,

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import "./App.scss";
 import Tilt from "react-parallax-tilt";
-import ImageNft from "./assets/0.png";
+import ImageNft from "./assets/2.png";
 
 import { Footer } from "./components/Footer";
 import { Button } from "./components/Button";
@@ -34,7 +34,7 @@ const App = () => {
       const successUrl = `${window.location.origin}`;
       wallet.signIn(successUrl);
     } else {
-      mintNft(5);
+      mintNft(2);
     }
   };
   return (
@@ -46,17 +46,17 @@ const App = () => {
             <div className="flex items-center justify-center flex-col order-2 sm:order-1 sm:px-10">
               <div className="mb-5">
                 <div className="font-headline text-3xl font-bold mb-3">
-                  Heading
+                  Mint a Don
                 </div>
                 <div className="font-headline text-xl">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Pariatur, quasi.
+                  The Dons NFT launching on $NEAR Protocol. Blood makes you
+                  related. Loyalty makes you family.
                 </div>
               </div>
 
               <div className="flex space-x-4 w-full">
-                <Button onClick={handleClick}>Mint 1</Button>
-                <Button onClick={handleManyClick}>Mint 5</Button>
+                <Button onClick={handleClick}>Mint 1 Don</Button>
+                <Button onClick={handleManyClick}>Mint 2 Dons</Button>
               </div>
             </div>
             <div className="pb-10 pt-5 sm:p-10 order-1 sm:order-2">
@@ -69,7 +69,7 @@ const App = () => {
                 glareBorderRadius="10px"
               >
                 <div className="rounded-lg shadow-2xl">
-                  <img className="rounded-lg" src={ImageNft} />
+                  <img className="rounded-lg" src={ImageNft} alt="A Don" />
                 </div>
               </Tilt>
             </div>
